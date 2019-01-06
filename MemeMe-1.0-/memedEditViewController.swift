@@ -4,11 +4,16 @@
 //
 //  Created by mohamed on 1/4/19.
 //  Copyright © 2019 mohamed. All rights reserved.
-//
+
+
 
 import UIKit
 
 class memedEditViewController: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate{
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -20,7 +25,7 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
   //  let memeTextAttributes:[NSAttributedString.Key.Any]=[
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-        NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1),
+        NSAttributedString.Key.foregroundColor:UIColor.white,
     
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         
@@ -50,10 +55,7 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
         self.subscipToKeyboardNotication()
         self.unsubscipToKeyboardNotication()
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
+ 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if bottonTextField.text=="TOP"||topTextField.text=="BOttom"{
             textField.text=""
@@ -86,14 +88,16 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
     @objc func keyboardWillHideNotification(_ notification:Notification){
         if topTextField.isFirstResponder{
         view.frame.origin.y=0
-        }}
+        }
+        
+    }
      func unsubscipToKeyboardNotication(){
        
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
     func save(){
         let memedImage = generatmemmedImage()
-        _ = meme(top: topTextField.text!, bottom: bottonTextField.text!, image: imageView.image, memedImage:memedImage)
+        _ = Meme(top: topTextField.text!, bottom: bottonTextField.text!, image: imageView.image, memedImage:memedImage)
         
         
     }
@@ -146,6 +150,7 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
     }
     
     @IBAction func shareButtonAction(_ sender: Any) {
+     
         let memedImage = generatmemmedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         activityController.completionWithItemsHandler = { activity, success, items, error in
