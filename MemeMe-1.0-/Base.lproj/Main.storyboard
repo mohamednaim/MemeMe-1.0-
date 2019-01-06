@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dm2-ul-bfy">
-    <device id="ipad12_9rounded" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,19 +10,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Memed Edit View Controller-->
         <scene sceneID="2Qg-AJ-gl4">
             <objects>
-                <viewController id="dm2-ul-bfy" customClass="ViewController" customModule="MemeMe_1_0_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dm2-ul-bfy" customClass="memedEditViewController" customModule="MemeMe_1_0_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BPZ-2O-TYT">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M4d-5F-RVF">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1346"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVp-GN-Twt">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="cXO-F9-p6c">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="Db1-3U-Tw1">
@@ -39,7 +39,7 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZx-uu-q7p">
-                                <rect key="frame" x="0.0" y="1296" width="1024" height="50"/>
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="PkH-f7-LHS"/>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="XhO-EJ-QNO"/>
@@ -59,16 +59,16 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UuM-B5-9fI">
-                                <rect key="frame" x="340.5" y="1238" width="343" height="17"/>
+                                <rect key="frame" x="35.666666666666657" y="634" width="343" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="eDg-1O-eok"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHO-Ht-uUc">
-                                <rect key="frame" x="340.5" y="104" width="343" height="58"/>
+                                <rect key="frame" x="35.666666666666657" y="98" width="343" height="58"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>

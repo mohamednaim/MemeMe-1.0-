@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate{
+class memedEditViewController: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate{
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -20,9 +20,11 @@ class ViewController: UIViewController ,UINavigationControllerDelegate,UIImagePi
   //  let memeTextAttributes:[NSAttributedString.Key.Any]=[
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-        NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
+        NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1),
+    
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth:  4.0,
+        
+        NSAttributedString.Key.strokeWidth: -4.0,
       
     ]
     
@@ -113,20 +115,26 @@ class ViewController: UIViewController ,UINavigationControllerDelegate,UIImagePi
     }
     
     @IBAction func imagePicker(_ sender: Any) {
-        
-        let imagePiker=UIImagePickerController()
-        imagePiker.delegate=self
-        imagePiker.sourceType = .photoLibrary
-        present(imagePiker,animated: true,completion: nil)
-        
+        //this for preent photo from library
+        //refrence from
+      
+         pickImage(sourceType:.photoLibrary)
         
     }
     @IBAction func cameraButtonAction(_ sender: Any) {
+       pickImage(sourceType:.camera)
+        
+    }
+    func pickImage(sourceType: UIImagePickerController.SourceType){
         let imagePiker=UIImagePickerController()
         imagePiker.delegate=self
-        imagePiker.sourceType = .photoLibrary
-        self.present(imagePiker,animated: true,completion: nil)
         
+        imagePiker.sourceType = sourceType
+            
+       
+        imagePiker.sourceType = .camera
+        self.present(imagePiker,animated: true,completion: nil)
+       
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
       let image=info[UIImagePickerController.InfoKey.originalImage]as?UIImage
@@ -141,7 +149,11 @@ class ViewController: UIViewController ,UINavigationControllerDelegate,UIImagePi
         let memedImage = generatmemmedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         activityController.completionWithItemsHandler = { activity, success, items, error in
-            self.save()
+            if success{
+                self.save()
+            } else {
+                //Do nothing
+            }
             self.dismiss(animated: true, completion: nil)
         }
         
