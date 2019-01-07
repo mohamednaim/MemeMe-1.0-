@@ -65,13 +65,13 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHO-Ht-uUc" userLabel="top Text Field">
                                 <rect key="frame" x="35.666666666666657" y="98" width="343" height="58"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,13 +97,13 @@
                         <viewLayoutGuide key="safeArea" id="6oQ-r0-Eoy"/>
                     </view>
                     <connections>
-                        <outlet property="bottonTextField" destination="FHO-Ht-uUc" id="3BF-Fy-NWj"/>
+                        <outlet property="bottomTextField" destination="UuM-B5-9fI" id="89A-Nj-MR1"/>
                         <outlet property="cameraButton" destination="7gR-ZP-8X9" id="fJA-U1-vSS"/>
                         <outlet property="imageView" destination="M4d-5F-RVF" id="jzv-ut-deY"/>
                         <outlet property="navigationBar" destination="uVp-GN-Twt" id="Oo6-Vh-cXW"/>
                         <outlet property="photoLibraryButton" destination="e7l-Cg-cXY" id="55B-bj-U33"/>
                         <outlet property="toolBar" destination="lZx-uu-q7p" id="3bK-en-rVn"/>
-                        <outlet property="topTextField" destination="UuM-B5-9fI" id="Uqy-IN-bKA"/>
+                        <outlet property="topTextField" destination="FHO-Ht-uUc" id="ZqN-Ia-xE6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aja-FF-l25" userLabel="First Responder" sceneMemberID="firstResponder"/>
