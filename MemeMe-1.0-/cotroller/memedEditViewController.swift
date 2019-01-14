@@ -10,7 +10,12 @@ import UIKit
 
 
 class memedEditViewController: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate{
-    
+    var memes:[Meme]{
+     return(UIApplication.shared.delegate as! AppDelegate).memes
+        
+        
+        
+    }
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -40,6 +45,7 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
             topTextField.text="TOP"
             textField.textAlignment = .center
             textField.delegate=self
+            
         }
         
         stylizeTextField(textField: bottomTextField)
@@ -49,10 +55,11 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
         super.viewWillAppear(animated)
         cameraButton.isEnabled=UIImagePickerController.isSourceTypeAvailable(.camera)
         self.subscipToKeyboardNotication()
-        self.unsubscipToKeyboardNotication()
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        unsubscipToKeyboardNotication()
         
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -81,20 +88,25 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
     func subscipToKeyboardNotication(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         
         
     }
     @objc func keyboardWillHideNotification(_ notification:Notification){
-        if topTextField.isFirstResponder{
+        if bottomTextField.isFirstResponder{
             view.frame.origin.y=0
         }}
     func unsubscipToKeyboardNotication(){
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+    
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self)
     }
     func save(){
         let memedImage = generatmemmedImage()
-        _ = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imageView.image, memedImage:memedImage)
+        let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imageView.image, memedImage:memedImage)
+        //addanite itemArray To application deleget every memes vcreat add to app delegat
+        let appDelegat=UIApplication.shared.delegate as!AppDelegate
+        appDelegat.memes.append(meme)
         
         
     }
@@ -125,6 +137,7 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
     @IBAction func cameraButtonAction(_ sender: Any)
     {
         pickImage(sourceType:.camera)
+        
         
     }
     func pickImage(sourceType: UIImagePickerController.SourceType){
