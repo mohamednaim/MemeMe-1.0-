@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XAO-ZO-Ir3" customClass="CollectionCell" customModule="MemeMe_1_0_" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="XAO-ZO-Ir3" customClass="CollectionCell" customModule="MemeMe_1_0_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="186"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -116,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TEy-9Q-jgr" customClass="TableViewCell" customModule="MemeMe_1_0_" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="TEy-9Q-jgr" customClass="TableViewCell" customModule="MemeMe_1_0_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TEy-9Q-jgr" id="i0o-fX-KuA">
@@ -188,7 +188,7 @@
         <!--Memed Edit View Controller-->
         <scene sceneID="2Qg-AJ-gl4">
             <objects>
-                <viewController id="dm2-ul-bfy" customClass="memedEditViewController" customModule="MemeMe_1_0_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dm2-ul-bfy" customClass="MemedEditViewController" customModule="MemeMe_1_0_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BPZ-2O-TYT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,23 +196,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M4d-5F-RVF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVp-GN-Twt">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="cXO-F9-p6c">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="Db1-3U-Tw1">
-                                            <connections>
-                                                <action selector="shareButtonAction:" destination="dm2-ul-bfy" id="d3v-UU-63K"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="fGw-Ss-dDs">
-                                            <connections>
-                                                <action selector="cancelButtonAction:" destination="dm2-ul-bfy" id="YGU-Tz-jJ6"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZx-uu-q7p">
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <items>
@@ -254,20 +237,16 @@
                             <constraint firstItem="M4d-5F-RVF" firstAttribute="trailing" secondItem="6oQ-r0-Eoy" secondAttribute="trailing" id="0ov-pI-8Hi"/>
                             <constraint firstItem="UuM-B5-9fI" firstAttribute="trailing" secondItem="FHO-Ht-uUc" secondAttribute="trailing" id="7Ba-9J-0dn"/>
                             <constraint firstItem="M4d-5F-RVF" firstAttribute="bottom" secondItem="6oQ-r0-Eoy" secondAttribute="bottom" id="7iZ-Qa-o8P"/>
+                            <constraint firstItem="FHO-Ht-uUc" firstAttribute="top" secondItem="6oQ-r0-Eoy" secondAttribute="top" constant="34" id="F2w-dl-mfP"/>
                             <constraint firstItem="lZx-uu-q7p" firstAttribute="leading" secondItem="6oQ-r0-Eoy" secondAttribute="leading" id="GcM-ZW-AhE"/>
                             <constraint firstItem="UuM-B5-9fI" firstAttribute="width" secondItem="FHO-Ht-uUc" secondAttribute="width" id="JLK-QG-vZr"/>
-                            <constraint firstItem="FHO-Ht-uUc" firstAttribute="centerX" secondItem="uVp-GN-Twt" secondAttribute="centerX" id="JW9-Ut-WOz"/>
                             <constraint firstItem="lZx-uu-q7p" firstAttribute="trailing" secondItem="6oQ-r0-Eoy" secondAttribute="trailing" id="TpH-o4-dGX"/>
                             <constraint firstItem="M4d-5F-RVF" firstAttribute="top" secondItem="BPZ-2O-TYT" secondAttribute="top" id="YCm-qR-tHV"/>
                             <constraint firstItem="lZx-uu-q7p" firstAttribute="top" secondItem="UuM-B5-9fI" secondAttribute="bottom" constant="41" id="Z7Z-QA-Mfx"/>
-                            <constraint firstItem="uVp-GN-Twt" firstAttribute="trailing" secondItem="6oQ-r0-Eoy" secondAttribute="trailing" id="ge8-Rm-Vek"/>
                             <constraint firstItem="lZx-uu-q7p" firstAttribute="bottom" secondItem="6oQ-r0-Eoy" secondAttribute="bottom" id="ghr-Ox-Hn0"/>
                             <constraint firstItem="UuM-B5-9fI" firstAttribute="leading" secondItem="FHO-Ht-uUc" secondAttribute="leading" id="o9j-ek-hwz"/>
-                            <constraint firstItem="uVp-GN-Twt" firstAttribute="leading" secondItem="6oQ-r0-Eoy" secondAttribute="leading" id="pjl-fF-a95"/>
-                            <constraint firstItem="FHO-Ht-uUc" firstAttribute="top" secondItem="uVp-GN-Twt" secondAttribute="bottom" constant="54" id="q1K-DN-DG9"/>
                             <constraint firstItem="M4d-5F-RVF" firstAttribute="leading" secondItem="6oQ-r0-Eoy" secondAttribute="leading" id="tGc-Kh-xOm"/>
                             <constraint firstItem="UuM-B5-9fI" firstAttribute="centerX" secondItem="lZx-uu-q7p" secondAttribute="centerX" id="u4N-IV-60j"/>
-                            <constraint firstItem="uVp-GN-Twt" firstAttribute="top" secondItem="BPZ-2O-TYT" secondAttribute="top" id="xTe-t3-A56"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6oQ-r0-Eoy"/>
                     </view>
@@ -279,7 +258,6 @@
                         <outlet property="bottomTextField" destination="UuM-B5-9fI" id="89A-Nj-MR1"/>
                         <outlet property="cameraButton" destination="7gR-ZP-8X9" id="fJA-U1-vSS"/>
                         <outlet property="imageView" destination="M4d-5F-RVF" id="jzv-ut-deY"/>
-                        <outlet property="navigationBar" destination="uVp-GN-Twt" id="Oo6-Vh-cXW"/>
                         <outlet property="photoLibraryButton" destination="e7l-Cg-cXY" id="55B-bj-U33"/>
                         <outlet property="toolBar" destination="lZx-uu-q7p" id="3bK-en-rVn"/>
                         <outlet property="topTextField" destination="FHO-Ht-uUc" id="ZqN-Ia-xE6"/>

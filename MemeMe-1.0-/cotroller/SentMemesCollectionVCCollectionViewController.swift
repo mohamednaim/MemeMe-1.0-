@@ -19,7 +19,7 @@ class SentMemesCollectionVCCollectionViewController: UICollectionViewController 
         return(UIApplication.shared.delegate as!AppDelegate).memes
         
     }
-let reuseIdentifier="SentMemesCollectionViewCell"
+let reuseIdentifier="CollectionViewCell"
     override func viewDidLoad() {
         super.viewDidLoad()
           navigationItem.title = "Sent Memes"
@@ -29,8 +29,13 @@ let reuseIdentifier="SentMemesCollectionViewCell"
     private func setDefaultState(){
         let space:CGFloat
         let dimention:CGFloat
-        space = 2.0
-        dimention = (view.frame.size.width - (2 * space)) / 3
+        if (UIDevice.current.orientation.isPortrait) {
+            space = 1.0
+            dimention = (view.frame.size.width - (1 * space)) / 5
+        }else{
+            space = 2.0
+            dimention = (view.frame.size.width - (2 * space)) / 3
+        }
         flowLayout.minimumLineSpacing=space
         flowLayout.minimumInteritemSpacing=space
         flowLayout.itemSize=CGSize(width: dimention, height: dimention	)

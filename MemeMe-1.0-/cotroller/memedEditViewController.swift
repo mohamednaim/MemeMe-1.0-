@@ -9,13 +9,8 @@
 import UIKit
 
 
-class memedEditViewController: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate{
-    var memes:[Meme]{
-     return(UIApplication.shared.delegate as! AppDelegate).memes
-        
-        
-        
-    }
+class MemedEditViewController: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate{
+    
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -47,13 +42,12 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
             textField.delegate=self
             
         }
-        
-        stylizeTextField(textField: bottomTextField)
+        cameraButton.isEnabled=UIImagePickerController.isSourceTypeAvailable(.camera);        stylizeTextField(textField: bottomTextField)
         stylizeTextField(textField: topTextField)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cameraButton.isEnabled=UIImagePickerController.isSourceTypeAvailable(.camera)
+    
         self.subscipToKeyboardNotication()
         
     }
@@ -93,9 +87,9 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
         
     }
     @objc func keyboardWillHideNotification(_ notification:Notification){
-        if bottomTextField.isFirstResponder{
+     
             view.frame.origin.y=0
-        }}
+       }
     func unsubscipToKeyboardNotication(){
     
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
@@ -110,18 +104,19 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
         
         
     }
+    func hideToolbars(_ hide: Bool) {
+        navigationBar.isHidden=hide
+        toolBar.isHidden=hide
+    }
     func generatmemmedImage()->UIImage{
         // TODO: Hide toolbar and navbar
-        navigationBar.isHidden=true
-        toolBar.isHidden=true
+        hideToolbars(true)
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memmedImage:UIImage=UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndPDFContext()
-        navigationBar.isHidden = false
-        toolBar.isHidden = false
-        
+       hideToolbars(false)
         
         
         return memmedImage
@@ -177,6 +172,7 @@ class memedEditViewController: UIViewController ,UINavigationControllerDelegate,
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         self.imageView.image = nil
+        dismiss(animated: true, completion: nil)
         
     }
     
