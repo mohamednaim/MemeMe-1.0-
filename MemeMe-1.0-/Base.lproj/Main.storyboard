@@ -172,7 +172,7 @@
         <scene sceneID="YBy-qt-6b9">
             <objects>
                 <navigationController id="XbZ-yz-tRO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="tMw-Xp-dbQ"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="table_30x30" id="tMw-Xp-dbQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="glE-Tz-OUy">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -251,7 +251,11 @@
                         <viewLayoutGuide key="safeArea" id="6oQ-r0-Eoy"/>
                     </view>
                     <navigationItem key="navigationItem" id="eD0-Km-iey">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="KFi-Dz-f4V"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="KFi-Dz-f4V">
+                            <connections>
+                                <action selector="shareButtonAction:" destination="dm2-ul-bfy" id="UU3-Vf-Cgl"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5d8-F5-OMq"/>
                     </navigationItem>
                     <connections>
@@ -289,7 +293,7 @@
         <scene sceneID="hDe-t1-8GX">
             <objects>
                 <navigationController id="I7R-vE-fKd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="4qx-d8-Gjd"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="collection_30x30" id="4qx-d8-Gjd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="26a-2A-vg1">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -303,6 +307,10 @@
             <point key="canvasLocation" x="-836" y="149"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection_30x30" width="30" height="30"/>
+        <image name="table_30x30" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qir-Nd-FXs"/>
     </inferredMetricsTieBreakers>
