@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MemedEditViewController: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate{
+class memedEditViewController: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate{
     
     
     @IBOutlet weak var imageView: UIImageView!
@@ -67,7 +67,7 @@ class MemedEditViewController: UIViewController ,UINavigationControllerDelegate,
         return true
     }
     @ objc func keyboardWillShowNotification(_ notification:Notification){
-        if topTextField.isFirstResponder{
+        if bottomTextField.isFirstResponder{
             
             view.frame.origin.y = -getKeyboardHeight(notification)
         }
@@ -88,12 +88,15 @@ class MemedEditViewController: UIViewController ,UINavigationControllerDelegate,
     }
     @objc func keyboardWillHideNotification(_ notification:Notification){
      
-            view.frame.origin.y=0
+        if bottomTextField.isFirstResponder {
+            view.frame.origin.y = 0 // Move view to original position
+        }
        }
     func unsubscipToKeyboardNotication(){
     
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self)
+     
     }
     func save(){
         let memedImage = generatmemmedImage()
@@ -160,8 +163,9 @@ class MemedEditViewController: UIViewController ,UINavigationControllerDelegate,
         activityController.completionWithItemsHandler = { activity, success, items, error in
             if success{
                 self.save()
+                self.dismiss(animated: true, completion: nil)
             }
-            self.dismiss(animated: true, completion: nil)
+            
         }
         
         present(activityController, animated: true, completion: nil)
